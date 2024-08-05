@@ -1,28 +1,64 @@
-body{
-    background-color: rgb(39, 48, 48); 
-    align-items: center;
-    text-align: center;
+body {
+    background-color: rgb(39, 48, 48);
     color: rgb(18, 226, 101);
-
+    text-align: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* Ensures the body takes up the full viewport height */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-ul{
-    align-items: center;
-    text-decoration: none;
+
+ul {
     list-style-type: none;
-    
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-li{
-    margin: 100px;
 
+li {
+    margin: 20px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-button{
+
+li:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+}
+
+button {
     border-radius: 10px;
     font-size: 35px;
     background-color: rgb(221, 97, 212);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.note{
+
+button:hover {
+    background-color: rgb(181, 76, 177);
+    transform: scale(1.1);
+}
+
+.note {
     color: rgb(241, 226, 13);
-    margin: 100px;
+    margin: 20px;
+    padding: 20px;
     border-radius: 200px;
-    
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.note:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
