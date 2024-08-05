@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(39, 48, 48); 
+    align-items: center;
+    text-align: center;
+    color: rgb(18, 226, 101);
+
+}
+ul{
+    align-items: center;
+    text-decoration: none;
+    list-style-type: none;
+    
+}
+li{
+    margin: 100px;
+
+}
+button{
+    border-radius: 10px;
+    font-size: 35px;
+    background-color: rgb(221, 97, 212);
+}
+.note{
+    color: rgb(241, 226, 13);
+    margin: 100px;
+    border-radius: 200px;
+    
+}
