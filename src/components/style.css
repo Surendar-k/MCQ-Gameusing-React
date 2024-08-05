@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(39, 48, 48);
+    background-color: rgb(94, 167, 167);
     color: rgb(18, 226, 101);
     text-align: center;
     margin: 0;
@@ -62,3 +62,55 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
 }
+/* style.css */
+.quiz-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .progress-bar {
+    position: relative;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .progress {
+    height: 100%;
+    background: #4caf50;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+  }
+  
+  .question-container {
+    text-align: center;
+  }
+  
+  .optionslist {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .optionslist li {
+    margin: 10px 0;
+  }
+  
+  button {
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0b7dda;
+  }
+  
