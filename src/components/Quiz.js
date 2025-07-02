@@ -1,73 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Result from './Result';
 import Question from './Question';
-import './style.css'; // Make sure to create this CSS file
-
-const questions = [
-  {
-    question: 'What is the time complexity of binary search?',
-    options: [
-      { text: 'O(n)', isCorrect: false },
-      { text: 'O(log n)', isCorrect: true },
-      { text: 'O(n log n)', isCorrect: false },
-      { text: 'O(1)', isCorrect: false },
-    ],
-  },
-  {
-    question: 'Which of the following is a functional programming language?',
-    options: [
-      { text: 'Java', isCorrect: false },
-      { text: 'C++', isCorrect: false },
-      { text: 'Haskell', isCorrect: true },
-      { text: 'Python', isCorrect: false },
-    ],
-  },
-  {
-    question: 'What does the acronym REST stand for in web services?',
-    options: [
-      { text: 'Representational State Transfer', isCorrect: true },
-      { text: 'Relational State Transfer', isCorrect: false },
-      { text: 'Representational Service Transfer', isCorrect: false },
-      { text: 'Relational Service Transfer', isCorrect: false },
-    ],
-  },
-  {
-    question: 'Which of the following is used to style HTML pages?',
-    options: [
-      { text: 'JavaScript', isCorrect: false },
-      { text: 'HTML', isCorrect: false },
-      { text: 'CSS', isCorrect: true },
-      { text: 'Python', isCorrect: false },
-    ],
-  },
-  {
-    question: 'What is the purpose of the "this" keyword in JavaScript?',
-    options: [
-      { text: 'To refer to the global object', isCorrect: false },
-      { text: 'To refer to the current object', isCorrect: true },
-      { text: 'To refer to the function object', isCorrect: false },
-      { text: 'To refer to the previous object', isCorrect: false },
-    ],
-  },
-  {
-    question: 'Which algorithm is commonly used for sorting data?',
-    options: [
-      { text: 'Breadth-First Search', isCorrect: false },
-      { text: 'Dijkstra’s Algorithm', isCorrect: false },
-      { text: 'Merge Sort', isCorrect: true },
-      { text: 'Binary Search', isCorrect: false },
-    ],
-  },
-];
+import './style.css';
 
 const Quiz = () => {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  fetch('/react_quiz_questions.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const shuffled = data.sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 5); // Pick only 5 questions
+      setQuestions(selected);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error('Error loading questions:', error);
+      setLoading(false);
+    });
+}, []);
 
   const handleAnswer = (isCorrect) => {
-    if (isCorrect) setScore(score + 1);
+    if (isCorrect) setScore((prev) => prev + 1);
     const nextQuestion = currentQuestion + 1;
     setProgress(((nextQuestion / questions.length) * 100).toFixed(0));
 
@@ -77,6 +37,8 @@ const Quiz = () => {
       setShowResult(true);
     }
   };
+
+  if (loading) return <div className="quiz-container">Loading questions...</div>;
 
   return (
     <div className="quiz-container">
